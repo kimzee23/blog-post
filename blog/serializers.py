@@ -4,9 +4,11 @@ from blog.models import BlogArticle
 
 
 class BlogArticleSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField(read_only=True)
+
     class Meta:
         model = BlogArticle
-        fields =[
+        fields = [
             "id",
             "title",
             "content",
@@ -18,4 +20,4 @@ class BlogArticleSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         ]
-        read_only_fields = ["slug","created_at", "updated_at"]
+        read_only_fields = ["author", "id", "slug", "created_at", "updated_at"]
